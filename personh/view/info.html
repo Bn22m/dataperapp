@@ -1,0 +1,20 @@
+﻿
+
+	<img src="img/dataperapp.png" alt="dataperapp">
+	<div>Online System.</div>
+    <br>
+    <div>
+         <table border="1" width="100%">
+             <tr>
+                 <th>Index</th>
+                 <th>DataPerApp</th>
+                 <th>Service</th>
+             </tr>
+             <tr ng-repeat="x in info">
+               <td>{{$index + 1 }}</td>
+               <td>{{ x }}</td>
+               <td><button class="btn btn-primary" data-ng-click="viewService(x)">View</button></td>
+            </tr>
+         </table> 
+    </div> 
+	

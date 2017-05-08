@@ -1,0 +1,5 @@
+C:\csharp\proc\personh\bin\personh.dll
+C:\csharp\proc\personh\bin\personh.pdb
+C:\csharp\proc\personh\obj\Debug\personh.csprojResolveAssemblyReference.cache
+C:\csharp\proc\personh\obj\Debug\personh.dll
+C:\csharp\proc\personh\obj\Debug\personh.pdb
