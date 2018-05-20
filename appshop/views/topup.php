@@ -5,8 +5,10 @@
  * @author Brian
  */
 include 'header.php'
-
 ?>
+<a href="../index.php">Log Out</a> <a href="welcome.php">more</a>
+<hr>
+
 <table>
     <form action='../libs/topups.php' method='POST'>
     <tr><td>User:</td>
@@ -20,9 +22,6 @@ include 'header.php'
     </tr>
     </form>
 </table>
-
-
-
 
 <?php
 echo "<br><br>";

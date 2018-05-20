@@ -16,7 +16,7 @@ if(isset($_REQUEST['btna']))
 /**
  * Description of Transactions
  *
- * @author Brian3
+ * @author Brian
  */
 class Transactions 
 {
@@ -54,7 +54,7 @@ class Transactions
 			$smt->execute();
             $smt->bind_result($this->id, $this->topup, $this->purchase, $this->prodcode, $this->price, $this->discount, $this->balance, $this->datepp);
             $j = 0;
-			echo "<br># $j: ";
+			echo "<br># n:ID#TOP#PUR#PRO#PRI#DIS#BAL#DATE#";
 			while ($smt->fetch())
 			{
 				echo "<br># $j: ";
@@ -77,7 +77,8 @@ class Transactions
 				$j++;
 			}
 			//
-            echo "<br>";
+            echo "<br><hr>";
+            echo "#User: ";
             echo $this->userid;
 			echo "<br>";
             echo $this->user;
@@ -85,6 +86,7 @@ class Transactions
             
             echo "Enjoy!";
             echo "<br>";
+            echo "#Ref: ";
 			echo $this->info;
             echo "<br>";
             echo $this->datep;
@@ -103,7 +105,10 @@ class Transactions
 }
 ?>
 
-<p><a href="../index.php">Exit</a><hr></p>
+<a href="../index.php">Exit</a>
+<a href="../views/welcome.php">more</a>
+<hr>
+<br>
 <h1>Shopping API</h1>
 <p>Please Enter the Userid</p>
 <form action="../libs/transactions.php" method="post">

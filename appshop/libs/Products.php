@@ -8,7 +8,7 @@ include '../configs/dbconfig.php';
 /**
  * Description of Products
  *
- * @author Brian3
+ * @author Brian
  */
 class Products 
 {

@@ -12,7 +12,8 @@ if(!isset($_REQUEST["btntop"]))
 } 
 $user = $_SESSION["userid"];
 echo "<br> user#: ".$user."<br>";
-echo '<br><a href="../views/welcome.php">View more </a>';
+echo '<a href="../index.php">Log Out</a> ';
+echo ' <a href="../views/welcome.php">more</a>';
 echo "<br><hr><br>";
 $app = new Topups($_REQUEST, $user);
 

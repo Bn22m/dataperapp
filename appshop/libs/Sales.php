@@ -6,9 +6,10 @@
 include '../configs/dbconfig.php';
 include '../views/header.php';
 $userid = $_SESSION['userid'];
-echo " $userid <br><hr> ";
-echo '<a href="../index.php">log out</a>';
-echo "<br><br>";
+echo " $userid <br> ";
+echo ' <a href="../index.php">log out</a> ';
+echo ' <a href="../views/welcome.php">more</a> ';
+echo "<br><hr><br>";
 
 $app = new Sales($_REQUEST, $userid);
 /**
@@ -148,9 +149,10 @@ class Sales
             $smt = $mysqli->prepare($query);
             $smt->bind_param("sssssss", $this->userid, $this->total, $this->code, $this->price, $this->discount, 
                     $this->balance2, $this->datepp);
-            $smt->execute();
+            $trans = $smt->execute();
             $smt->close();
             $mysqli->close();
+            echo "Trans: $trans <br>";
             
         } 
         catch (Exception $ex) 

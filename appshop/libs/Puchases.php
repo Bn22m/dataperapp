@@ -7,7 +7,7 @@ include '../configs/dbconfig.php';
 /**
  * Description of Puchases
  *
- * @author Brian3
+ * @author Brian
  */
 $app = new Puchases();
 class Puchases 
@@ -16,6 +16,7 @@ class Puchases
     var $name;
     var $price;
     var $discount;
+    var $dicountp;
     var $quantity;
     var $total;
     
@@ -35,6 +36,7 @@ class Puchases
         $smt->execute();
         $resultb = $smt->bind_result($this->code, $this->name, $this->price, $this->discount, $this->quantity);
         $y = 1;
+        echo '<tr><td>Prod</td><td>Code</td><td>Price</td><td>Discount(%)</td><td>Total</td></tr>';
         while($smt->fetch())
         {
             $this->discounts($this->price);
@@ -66,21 +68,35 @@ class Puchases
         $mysqli = connDB();
         //
         $price = filter_var($pricep, FILTER_SANITIZE_STRIPPED);
-        $query = "SELECT discount FROM discounts WHERE  ($price > pmin and pmax = NULL) or ($price >= pmin and $price <= pmax)";
+        $pm = 120;
+        $query = "SELECT discount FROM discounts WHERE  ($price > pmin and pmax is null) or ($price >= pmin and $price <= pmax)";
         $smt = $mysqli->prepare($query);
         $smt->execute();
         $smt->bind_result($dsct);
         $smt->fetch();
         $smt->close();
         $mysqli->close();
+        if($dsct == "")
+        {
+            //echo "no disc <br>";
+            $dsct = 0.00;
+            //echo "$dsct <br> ";
+        }
         $this->discount = $dsct;
-        $this->total = ($price - ($price * $dsct/100));
+        $this->dicountp = ($price * $dsct/100);
+        $this->total = ($price - $this->dicountp);
+        if($dsct > 0)
+        {
+            echo "$this->discount %<br> ";
+            echo "$price - ";
+            echo "$this->dicountp = ";
+            echo "$this->total <br> ";
+        }
         
         } 
         catch (Exception $ex)
         {
 
         }
-        
     }
 }

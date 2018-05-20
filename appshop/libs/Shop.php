@@ -1,12 +1,10 @@
 <?php
-session_start();
-
 /*
  * Shop.php
  */
-
-include '../configs/dbconfig.php';
 include '../views/header.php';
+include '../configs/dbconfig.php';
+
 if(!isset($_REQUEST["login"]))
 {
     header("Location: ../views/login.php");
@@ -18,7 +16,7 @@ $app = new Shop($_REQUEST);
 /**
  * Description of Shop
  *
- * @author Brian3
+ * @author Brian
  */
 class Shop 
 {
@@ -56,6 +54,8 @@ class Shop
         }
         $temp = "temp1@";
         $temp .= $this->password;
+        $temp .= $this->email[0];
+        $temp .= COMPANY[6];
         $temp2 = hash('sha256', $temp);
         $this->password = $temp2;
         $this->user = $temp3;
@@ -105,7 +105,6 @@ class Shop
     
 }
 ?>
-
 
 <?php
 echo "<br><br>";
